@@ -21,8 +21,30 @@ class TaskService
             $params['status'] = 1;
 
             return $this->model->create($params);
-        } catch (Exception $e) {
-            Log::error($e->getMessage());
+        } catch (Exception $exception) {
+            Log::error($exception);
+
+            return false;
+        }
+    }
+
+    public function update($task, $params)
+    {
+        try {
+            return $task->update($params);
+        } catch (Exception $exception) {
+            Log::error($exception);
+
+            return false;
+        }
+    }
+
+    public function delete($task)
+    {
+        try {
+            return $task->delete();
+        } catch (Exception $exception) {
+            Log::error($exception);
 
             return false;
         }

@@ -4,7 +4,7 @@ namespace App\Http\Requests\Api\Task;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateRequest extends FormRequest
+class UpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,15 +22,8 @@ class CreateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required',
+            'name' => 'required|max:255',
             'description' => 'required'
-        ];
-    }
-
-    public function messages()
-    {
-        return [
-            'name.required' => 'hãy nhập name'
         ];
     }
 }
